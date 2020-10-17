@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pokédex</title>
+        <link rel=stylesheet type="text/css" href="/static/css/base.css">
+        <link rel=stylesheet type="text/css" href="/static/css/index.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+    <body>
+        <nav>
+            <a href="/">
+                <img src="/static/images/pokeball.png" class="pokeball">
+                <img src="/static/images/logo.png" class="logo">
+            </a>
+        </nav>
+        <div class="header">
+            <img src="/static/images/header.png" alt=""/>
+            <div>
+                <span class="header-title">Pokédex</span>
+                <br/>
+                Search. Learn. Play.
+            </div>
+        </div>
+        <div class="search-prompt">
+            <form method="get" action="{{ url_for('pokemon_page') }}">
+                <div class="prompt">Search for a Pokémon:</div>
+                <div class="suggestions-input">
+                    <div class="input">
+                        <input type="text" name="name" onkeyup="showSuggestions(this.value)">
+                        <input type="submit" id="search-submit" value="" class="search-icon"/>
+                    </div>
+                    <span class="suggestions"></span>
+                </div>
+            </form>
+        </div>
+        <div class="random">
+            <span onclick="getRandomPokemon('{{ request.url_root }}')">Learn about a random Pokémon!</span>
+        </div>
+        <div class="guess">
+            <a href="/guess">Play "Who's that Pokémon?"</a>
+        </div>
+        <div class="footer-container">
+            <div class="footer-1">Pokédex</div>
+            <div class="footer-2">This Pokédex was created by <a href="https://alanmorel.com/">Alan Morel</a> using <a href="https://pokeapi.co/">PokéAPI</a> for data. The backend is written in Python using <a href="http://flask.pocoo.org/">Flask</a>, PIL, and Requests. The frontend is written in HTML5, Javascript and CSS 3. This was created as a dual-class final project for <a href="https://cs.nyu.edu/courses/spring16/CSCI-UA.0380-002/assignments/final-project/">Drawing on the Web</a> and <a href="https://foureyes.github.io/csci-ua.0380-spring2016-004/assignments/final-project.html">Python for Applications</a>. <a href="https://www.pokemon.com/">Pokémon</a> is copyright The Pokémon Company and <a href="https://www.nintendo.com/">Nintendo</a>. Additional credits to Christine Zheng, Emily Koo and Anteneh Moges for ideas and support!</div>
+        </div>
+    </body>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/random.js"></script>
+</html>
